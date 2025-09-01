@@ -11,27 +11,36 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- ================= HERO / CAROUSEL ================= -->
-  <header class="hero" aria-label="Hero carousel">
-    <!-- Overlay buttons (top right) -->
+  <!-- MOBILE TOP BAR + SIDE DRAWER (phones only) -->
+  <div class="mobile-bar">
+    <div class="brand-mini">RASA</div>
+    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">☰</button>
+  </div>
+
+  <!-- Backdrop for closing when tapping outside -->
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+
+  <nav id="mobileDrawer" class="drawer" aria-hidden="true" hidden>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
+    <a href="#catalogue">Catalogue</a>
+    <a href="#feature">Charm Details</a>
+    <a href="#about">Our Story</a>
+    <a href="#signup" class="join">Join Waitlist</a>
+  </nav>
+
+  <!-- ================= HERO ================= -->
+  <header class="hero" aria-label="Hero">
+    <!-- Overlay buttons (shown on tablet/desktop) -->
     <nav class="hero-actions" aria-label="Hero quick actions">
       <a href="#catalogue" class="btn">Catalogue</a>
+      <a href="#feature" class="btn">Charm Details</a>
       <a href="#about" class="btn">Our Story</a>
       <a href="#signup" class="btn gold">Join Waitlist</a>
     </nav>
 
-    <!-- Slides (bullet-proof: <img> with object-fit) -->
-    <div class="slides" id="slides">
-      <!-- Update the src paths to your actual images -->
-      <div class="slide active">
-        <img class="slide-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="Perfume charm 1">
-      </div>
-      <div class="slide">
-        <img class="slide-img" src="images/RASA_Perfume_Keychain/kudi6.png" alt="Perfume charm 2">
-      </div>
-      <div class="slide">
-        <img class="slide-img" src="images/RASA_Perfume_Keychain/kudi7.png" alt="Perfume charm 3">
-      </div>
+    <!-- Single hero image -->
+    <div class="hero-image">
+      <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm">
     </div>
 
     <!-- Headline -->
@@ -39,21 +48,15 @@
       <h1 class="brand">RASA — Perfume Charms</h1>
       <p class="tag">Fine fragrance meets couture utility. Wear it on your bag, carry your aura everywhere.</p>
     </div>
-
-    <!-- Controls -->
-    <button class="arrow prev" aria-label="Previous slide" id="prev" title="Previous">‹</button>
-    <button class="arrow next" aria-label="Next slide" id="next" title="Next">›</button>
-    <div class="hero-controls" id="dots" aria-label="Slides navigation"></div>
   </header>
 
   <!-- ================= CATALOGUE ================= -->
-  <section id="catalogue" class="section">
+  <!-- <section id="catalogue" class="section">
     <div class="container">
       <h2>Catalogue</h2>
       <p class="lead">Discover our debut <span class="accent">perfume bag charms</span> — crafted to elevate your daily carry with lasting, personal scent.</p>
 
       <div class="catalogue">
-        <!-- Card 1 -->
         <article class="card">
           <img class="card-img" src="images/catalogue-1.jpg" alt="Scarlet No.1 charm bottle on burgundy leather" />
           <div class="card-body">
@@ -61,24 +64,38 @@
             <p class="card-text">Velvet rose, blackcurrant, and amber. A magnetic, modern classic.</p>
           </div>
         </article>
+      </div>
+    </div>
+  </section> -->
 
-        <!-- Card 2 -->
-        <article class="card">
-          <img class="card-img" src="images/catalogue-2.jpg" alt="Gold-edged charm with vanilla and oud notes" />
-          <div class="card-body">
-            <h3 class="card-title">Gilded Oud</h3>
-            <p class="card-text">Oud, Madagascan vanilla, and saffron — opulent and enduring.</p>
-          </div>
-        </article>
+  <!-- ================= FEATURE / ARTICLE ================= -->
+  <section id="feature" class="section alt">
+    <div class="container">
+      <div class="feature">
+        <!-- Left: auto-fading image stack -->
+        <div class="feature-media">
+          <img class="f-slide active" src="images/RASA_Perfume_Keychain/bagwhite.png" alt="Charm on leather bag">
+          <img class="f-slide" src="images/RASA_Perfume_Keychain/Bag 6.webp" alt="Close-up atomizer detail">
+          <img class="f-slide" src="images/RASA_Perfume_Keychain/Bag 8.webp" alt="Charm colorway variants">
+          <img class="f-slide" src="images/RASA_Perfume_Keychain/Bag 9.webp" alt="Gift packaging experience">
+        </div>
 
-        <!-- Card 3 -->
-        <article class="card">
-          <img class="card-img" src="images/catalogue-3.jpg" alt="Citrus leather charm against deep red textile" />
-          <div class="card-body">
-            <h3 class="card-title">Citrine Cuir</h3>
-            <p class="card-text">Italian bergamot over supple leather for a crisp, city-ready trail.</p>
+        <!-- Right: copy/details -->
+        <div class="feature-copy">
+          <h2>The RASA Charm, Up Close</h2>
+          <p class="lead">Refined metalwork, refillable core, and a micro-misting actuator engineered for a soft, even veil.</p>
+          <ul class="feature-list">
+            <li><span>Refillable 5 ml cartridge</span></li>
+            <li><span>Precision mist actuator</span></li>
+            <li><span>Premium PVD finish, anti-tarnish</span></li>
+            <li><span>Secure swivel clasp for any bag</span></li>
+          </ul>
+
+          <div class="feature-cta">
+            <a href="#signup" class="btn gold">Join Waitlist</a>
+            <a href="#catalogue" class="btn">Explore Catalogue</a>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
@@ -112,7 +129,6 @@
           <button type="submit" class="btn-primary">Join Waitlist</button>
         </div>
         <p class="note">Optional: place a refundable deposit to prioritize your reservation.</p>
-        <!-- Replace the href below with your real payment link -->
         <a class="paylink" href="https://example.com/pay" target="_blank" rel="noopener">Reserve with €10 deposit →</a>
       </form>
     </div>
@@ -122,67 +138,89 @@
     © <span id="year"></span> RASA — Perfume Charms. All rights reserved.
   </footer>
 
+  <!-- ================= SCRIPTS ================= -->
   <script>
-    // ---------- YEAR ----------
+    // YEAR
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // ---------- LIGHTWEIGHT CAROUSEL ----------
-    (function(){
-      const slides = [...document.querySelectorAll('.slide')];
-      const dotsWrap = document.getElementById('dots');
-      const prev = document.getElementById('prev');
-      const next = document.getElementById('next');
-
-      let i = 0, timer;
-
-      slides.forEach((_, idx) => {
-        const d = document.createElement('button');
-        d.className = 'dot' + (idx === 0 ? ' active' : '');
-        d.setAttribute('aria-label', 'Go to slide ' + (idx+1));
-        d.addEventListener('click', () => go(idx, true));
-        dotsWrap.appendChild(d);
-      });
-      const dots = [...dotsWrap.children];
-
-      const show = (idx) => {
-        slides.forEach(s => s.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        slides[idx].classList.add('active');
-        dots[idx].classList.add('active');
-      };
-
-      const go = (idx, user=false) => {
-        i = (idx + slides.length) % slides.length;
-        show(i);
-        if(user) reset();
-      };
-
-      const nextFn = () => go(i+1);
-      const prevFn = () => go(i-1);
-
-      prev.addEventListener('click', () => prevFn());
-      next.addEventListener('click', () => nextFn());
-
-      const start = () => timer = setInterval(nextFn, 5000);
-      const stop = () => clearInterval(timer);
-      const reset = () => { stop(); start(); };
-
-      start();
-
-      document.addEventListener('visibilitychange', () => {
-        if(document.hidden) stop(); else start();
-      });
-    })();
-
-    // ---------- PRE-SIGNUP ----------
+    // PRE-SIGNUP (placeholder)
     function handleSignup(e){
       e.preventDefault();
       const email = document.getElementById('email').value.trim();
       if(!email) return false;
-      alert('Thanks! We\'ve saved: ' + email + '\\n(Connect this form to your email service or Google Sheet.)');
+      alert('Thanks! We\'ve saved: ' + email + '\n(Connect this form to your email service or Google Sheet.)');
       e.target.reset();
       return false;
     }
+
+    // MOBILE DRAWER
+    (function(){
+      const hamburger   = document.getElementById('hamburger');
+      const drawer      = document.getElementById('mobileDrawer');
+      const backdrop    = document.getElementById('drawerBackdrop');
+      const drawerClose = document.getElementById('drawerClose');
+
+      if(!hamburger || !drawer || !backdrop || !drawerClose) return;
+
+      function openDrawer(){
+        hamburger.setAttribute('aria-expanded', 'true');
+        drawer.removeAttribute('hidden');
+        drawer.setAttribute('aria-hidden','false');
+        drawer.classList.add('is-open');
+        backdrop.removeAttribute('hidden');
+        backdrop.classList.add('is-open');
+        document.body.classList.add('noscroll');
+      }
+      function closeDrawer(){
+        hamburger.setAttribute('aria-expanded', 'false');
+        drawer.setAttribute('aria-hidden','true');
+        drawer.classList.remove('is-open');
+        backdrop.classList.remove('is-open');
+        document.body.classList.remove('noscroll');
+        setTimeout(() => {
+          drawer.setAttribute('hidden','');
+          backdrop.setAttribute('hidden','');
+        }, 280);
+      }
+
+      hamburger.addEventListener('click', () => {
+        const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+        isOpen ? closeDrawer() : openDrawer();
+      });
+      drawerClose.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
+      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
+      drawer.addEventListener('click', (e) => { if(e.target.matches('a')) closeDrawer(); });
+    })();
+
+    // FEATURE auto-rotating images
+    (function(){
+      const slides = Array.from(document.querySelectorAll('#feature .f-slide'));
+      if(slides.length <= 1) return;
+
+      let i = 0;
+      const show = (idx) => {
+        slides.forEach(s => s.classList.remove('active'));
+        slides[idx].classList.add('active');
+      };
+
+      show(i);
+      let timer = setInterval(() => {
+        i = (i + 1) % slides.length;
+        show(i);
+      }, 3500);
+
+      document.addEventListener('visibilitychange', () => {
+        if(document.hidden){ clearInterval(timer); }
+        else{
+          show(i);
+          timer = setInterval(() => {
+            i = (i + 1) % slides.length;
+            show(i);
+          }, 3500);
+        }
+      });
+    })();
   </script>
 </body>
 </html>
