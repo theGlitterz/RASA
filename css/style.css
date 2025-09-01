@@ -113,7 +113,7 @@ body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-
   position:relative;
   width:100%;
   max-width:420px;         /* smaller, balanced next to text */
-  aspect-ratio:4/5;        /* gives the container a real height */
+  aspect-ratio:1/1;        /* gives the container a real height */
   margin:0 auto;           /* center in its column */
   border-radius:var(--radius);
   overflow:hidden;
