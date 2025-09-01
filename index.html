@@ -40,7 +40,13 @@
 
     <!-- Single hero image -->
     <div class="hero-image">
-      <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm">
+      <!-- <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm"> -->
+    <picture>
+    <!-- Mobile image: used if screen width ≤ 640px -->
+    <source srcset="images/RASA_Perfume_Keychain/hero-mobile.png" media="(max-width: 640px)">
+    <!-- Default / desktop image -->
+    <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm">
+  </picture>
     </div>
 
     <!-- Headline -->
