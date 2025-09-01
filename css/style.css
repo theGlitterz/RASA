@@ -417,14 +417,96 @@ footer {
   background: rgba(0,0,0,0.05);
   transform: translateY(-2px);
 }
-/* DEBUG: force styles onto these exact sections */
-section#catalogue {
-  background: pink !important;
-  border: 4px solid red !important;
+/* ---- Subtle luxury backgrounds for FEATURE + SIGNUP ---- */
+section#feature {
+  /* ultra-subtle warm gradient + faint gold shimmer */
+  background:
+    linear-gradient(180deg, #fdfbf6, #f8f3e5), /* creamy beige */
+    radial-gradient(1200px 800px at 100% -200px, rgba(212,175,55,0.08), transparent 70%); /* faint gold glow */
+  color: #111;
 }
 
 section#signup {
-  background: lightblue !important;
-  border: 4px solid red !important;
+  background:
+    linear-gradient(180deg, #faf7f0, #fffdf8),
+    radial-gradient(900px 550px at -150px -150px, rgba(212,175,55,0.04), transparent 65%) !important;
+  color: #111;
 }
 
+/* readable text on these light sections */
+section#feature h2,
+section#signup h2 { color: #111; }
+
+section#feature .lead,
+section#signup .lead { color: #333; }
+
+/* buttons on light backgrounds */
+section#feature .btn,
+section#signup .btn {
+  border: 1px solid rgba(0,0,0,0.15);
+  color: #111;
+  background: rgba(255,255,255,0.7);
+}
+section#feature .btn:hover,
+section#signup .btn:hover {
+  background: rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+}
+
+/* Signup input restyle */
+#signup .input {
+  background: #fff;                         /* white box */
+  border: 1px solid var(--gold);            /* gold border */
+  border-radius: 999px;
+  padding: 6px 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+#signup .input input {
+  flex: 1 1 240px;
+  min-width: 220px;
+  padding: 12px 16px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #111;                              /* black text */
+}
+
+#signup .input input::placeholder {
+  color: #000;                              /* dark placeholder */
+  opacity: 0.8;
+}
+
+/* Gold button stays consistent */
+#signup .btn-primary {
+  border: none;
+  color: #111;
+  background: linear-gradient(135deg, #f7e7a7, var(--gold));
+  font-weight: 600;
+  padding: 12px 20px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: filter .3s ease, transform .3s ease;
+  box-shadow: 0 6px 12px rgba(212,175,55,.25);
+}
+#signup .btn-primary:hover {
+  filter: saturate(110%);
+  transform: translateY(-1px);
+}
+/* Make note + deposit link black */
+#signup .note {
+  color: #000 !important;
+}
+
+#signup .paylink {
+  color: #000 !important;
+  border-bottom: 1px dotted var(--gold);
+  text-decoration: none;
+}
+
+#signup .paylink:hover {
+  color: var(--gold); /* elegant hover */
+}
