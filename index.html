@@ -39,15 +39,38 @@
     </nav>
 
     <!-- Single hero image -->
-    <div class="hero-image">
-      <!-- <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm"> -->
-    <picture>
-    <!-- Mobile image: used if screen width ≤ 640px -->
-    <source srcset="images/RASA_Perfume_Keychain/hero-mobile.png" media="(max-width: 640px)">
-    <!-- Default / desktop image -->
-    <img class="hero-img" src="images/RASA_Perfume_Keychain/kudi3.png" alt="RASA Perfume Charm">
+<div class="hero-image">
+  <picture>
+    <!-- Phones -->
+    <source
+      media="(max-width: 640px)"
+      src= "images/RASA_Perfume_Keychain/hero-mobile-720.png 720w,
+        images/RASA_Perfume_Keychain/hero-mobile-1080.png 1080w"
+      sizes="100vw">
+
+    <!-- Tablets -->
+    <source
+      media="(max-width: 1024px)"
+      src="
+        images/RASA_Perfume_Keychain/hero-tablet-1280.png 1280w,
+        images/RASA_Perfume_Keychain/hero-tablet-1600.png 1600w"
+      sizes="100vw">
+
+    <!-- Desktop default -->
+    <img
+      class="hero-img"
+      src="images/RASA_Perfume_Keychain/hero-desktop-1920.png"
+      src="
+        images/RASA_Perfume_Keychain/hero-desktop-1280.png 1280w,
+        images/RASA_Perfume_Keychain/hero-desktop-1600.png 1600w,
+        images/RASA_Perfume_Keychain/hero-desktop-1920.png 1920w,
+        images/RASA_Perfume_Keychain/hero-desktop-2560.png 2560w"
+      sizes="100vw"
+      alt="RASA Perfume Charm">
   </picture>
-    </div>
+</div>
+
+
 
     <!-- Headline -->
     <div class="hero-copy">
@@ -107,21 +130,19 @@
   </section>
 
   <!-- ================= ABOUT ================= -->
-  <section id="about" class="section alt">
-    <div class="container">
-      <div class="about">
-        <figure>
-          <img src="images/about.jpg" alt="Artisan assembling a gold perfume charm" />
-        </figure>
-        <div class="copy">
-          <h2>About RASA</h2>
-          <p class="lead">We design <span class="accent">perfume as a companion</span> — a refined charm that clips to your bag and travels with you. Refillable. Responsible. Remarkably you.</p>
-          <p>Each piece is engineered for micro-misting, minimizing waste while maximizing sillage. Materials are selected for longevity, with finishes that patinate beautifully over time.</p>
-          <p>Hand-finished details, considered ergonomics, and signature accords define our approach.</p>
-        </div>
+  <section id="about" class="section about-bg" aria-label="About RASA">
+  <div class="container">
+    <div class="about">
+      <div class="copy">
+        <h2>About RASA</h2>
+        <p class="lead">We design <span class="accent">perfume as a companion</span> — a refined charm that clips to your bag and travels with you. Refillable. Responsible. Remarkably you.</p>
+        <p>Each piece is engineered for micro-misting, minimizing waste while maximizing sillage. Materials are selected for longevity, with finishes that patinate beautifully over time.</p>
+        <p>Hand-finished details, considered ergonomics, and signature accords define our approach.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <!-- ================= PRE-SIGNUP ================= -->
   <section id="signup" class="section">

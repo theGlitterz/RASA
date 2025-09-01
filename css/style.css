@@ -277,3 +277,35 @@ footer{
   .feature-media{ aspect-ratio:1/1; } /* square feel on phones */
   .brand{font-size:clamp(32px, 7vw, 56px);}
 }
+/* ----- ABOUT as full-bleed background image ----- */
+/* ---- ABOUT as full-bleed background ---- */
+.section.about-bg{
+  position: relative;
+  min-height: 60vh;
+  background: url('images/RASA_Perfume_Keychain/aboutusbg.png') center/cover no-repeat;
+}
+
+.section.about-bg::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35); /* adjust 0.2–0.5 for readability */
+}
+
+.section.about-bg .container{
+  position: relative;
+  z-index: 1; /* text sits above overlay */
+}
+
+/* Cancel 2-column grid for this section */
+.section.about-bg .about{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 60vh;
+}
+
+/* Text on top of image */
+.section.about-bg h2{ color:#fff; }
+.section.about-bg .lead{ color:#f0ece4; }
+.section.about-bg .copy p{ color:#eae6da; }
