@@ -12,17 +12,14 @@
 </head>
 <body>
   <!-- MOBILE TOP BAR + SIDE DRAWER (phones only) -->
-  <div class="mobile-bar">
-    <div class="brand-mini">RASA</div>
-    <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="mobileDrawer" aria-label="Open menu">☰</button>
-  </div>
+ 
 
   <!-- Backdrop for closing when tapping outside -->
   <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
 
   <nav id="mobileDrawer" class="drawer" aria-hidden="true" hidden>
-    <button class="drawer-close" id="drawerClose" aria-label="Close">×</button>
-    <a href="#catalogue">Catalogue</a>
+    <button class="drawer-close" id="drawerClose" aria-label="Close">X</button>
+    <!-- <a href="#catalogue">Catalogue</a> -->
     <a href="#feature">Charm Details</a>
     <a href="#about">Our Story</a>
     <a href="#signup" class="join">Join Waitlist</a>
@@ -32,11 +29,17 @@
   <header class="hero" aria-label="Hero">
     <!-- Overlay buttons (shown on tablet/desktop) -->
     <nav class="hero-actions" aria-label="Hero quick actions">
-      <a href="#catalogue" class="btn">Catalogue</a>
+      <!-- <a href="#catalogue" class="btn">Catalogue</a> -->
       <a href="#feature" class="btn">Charm Details</a>
       <a href="#about" class="btn">Our Story</a>
       <a href="#signup" class="btn gold">Join Waitlist</a>
     </nav>
+<!-- Mobile hamburger floating over hero -->
+<button class="hamburger mobile-hamburger"
+        id="hamburger"
+        aria-expanded="false"
+        aria-controls="mobileDrawer"
+        aria-label="Open menu">☰</button>
 
     <!-- Single hero image -->
 <div class="hero-image">
@@ -74,7 +77,7 @@
 
     <!-- Headline -->
     <div class="hero-copy">
-      <h1 class="brand">RASA — Perfume Charms</h1>
+      <h1 class="brand">RĀSA — Perfume Charms</h1>
       <p class="tag">Fine fragrance meets couture utility. Wear it on your bag, carry your aura everywhere.</p>
     </div>
   </header>
@@ -111,7 +114,7 @@
 
         <!-- Right: copy/details -->
         <div class="feature-copy">
-          <h2>The RASA Charm, Up Close</h2>
+          <h2>The RĀSA Charm, Up Close</h2>
           <p class="lead">Refined metalwork, refillable core, and a micro-misting actuator engineered for a soft, even veil.</p>
           <ul class="feature-list">
             <li><span>Refillable 5 ml cartridge</span></li>
@@ -130,11 +133,11 @@
   </section>
 
   <!-- ================= ABOUT ================= -->
-<section id="about" class="section about-bg" aria-label="About RASA">
+<section id="about" class="section about-bg" aria-label="About RĀSA">
   <div class="container">
     <div class="about">
       <div class="copy">
-        <h2>About RASA</h2>
+        <h2>About RĀSA</h2>
         <p class="lead">We design <span class="accent">perfume as a companion</span> — a refined charm that clips to your bag and travels with you. Refillable. Responsible. Remarkably you.</p>
         <p>Each piece is engineered for micro-misting, minimizing waste while maximizing sillage. Materials are selected for longevity, with finishes that patinate beautifully over time.</p>
         <p>Hand-finished details, considered ergonomics, and signature accords define our approach.</p>
@@ -179,7 +182,7 @@
 
 
   <footer>
-    © <span id="year"></span> RASA — Perfume Charms. All rights reserved.
+    © <span id="year"></span> RĀSA — Perfume Charms. All rights reserved.
   </footer>
 
   <!-- ================= SCRIPTS ================= -->
@@ -281,6 +284,29 @@
         }
       });
     })();
+
+    (function(){
+  const drawer   = document.getElementById('mobileDrawer');
+  const backdrop = document.getElementById('drawerBackdrop');
+  const burger   = document.getElementById('hamburger');
+  if(!drawer || !backdrop || !burger) return;
+
+  const closeDrawer = () => {
+    burger.setAttribute('aria-expanded','false');
+    drawer.classList.remove('is-open');
+    backdrop.classList.remove('is-open');
+    drawer.setAttribute('hidden','');
+    backdrop.setAttribute('hidden','');
+    document.body.classList.remove('noscroll');
+  };
+
+  // Ensure closed on load and on desktop resize
+  closeDrawer();
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 640) closeDrawer();
+  });
+})();
+
   </script>
 </body>
 </html>
