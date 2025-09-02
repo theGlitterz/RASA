@@ -708,5 +708,33 @@ section#signup .btn:hover {
   display: none !important;
 }
 
+/* Reset any old hides */
+.hero-actions{ display:flex; }       /* base default */
+.mobile-hamburger{ display:none; }   /* base default */
+
+/* Desktop & tablet: show buttons, hide hamburger */
+@media (min-width: 641px){
+  .hero-actions{
+    display:flex !important;
+    position:absolute; top:24px; right:24px;
+    z-index:1001;
+    gap:12px; flex-wrap:wrap; align-items:center; justify-content:flex-end;
+  }
+  .mobile-hamburger{ display:none !important; }
+}
+
+/* Mobile: hide buttons, show hamburger over hero */
+@media (max-width: 640px){
+  .hero-actions{ display:none !important; }
+  .mobile-hamburger{
+    position:absolute; top:12px; right:12px; z-index:1001;
+    display:grid !important; place-items:center;
+    width:42px; height:36px; border-radius:10px;
+    appearance:none; cursor:pointer;
+    border:1px solid rgba(212,175,55,.6);
+    background: rgba(0,0,0,.25);
+    color:#f7f3e7; font-size:18px;
+  }
+}
 
 
