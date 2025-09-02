@@ -296,7 +296,7 @@ footer {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.55); /* tweak 0.25–0.5 to taste */
+  background: rgba(0,0,0,0); /* tweak 0.25–0.5 to taste */
 }
 
 .section.about-bg .container{
