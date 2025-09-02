@@ -580,3 +580,45 @@ section#signup .btn:hover {
   box-shadow:0 6px 12px rgba(212,175,55,.25);
 }
 #signup .btn-primary:hover{ filter:saturate(110%); transform:translateY(-1px); }
+/* --- Mobile fix: make the Pay €1 & Join pill stack nicely --- */
+@media (max-width: 640px){
+  /* The unified pill container */
+  #signup .join-row{
+    flex-wrap: wrap;          /* allow the button to drop below */
+    padding: 10px;            /* a bit more breathing room */
+    border-radius: 16px;      /* looks better when the pill is taller */
+    gap: 8px;                 /* space between input and button */
+  }
+
+  /* Let the input span full width; kill the old min-width */
+  #signup .join-row input{
+    flex: 1 1 100%;
+    width: 100%;
+    min-width: 0;             /* overrides earlier 220px min-width */
+  }
+
+  /* Make the button full-width under the input */
+  #signup .join-row .btn-primary{
+    flex: 1 1 100%;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;       /* comfy tap target */
+    white-space: nowrap;
+  }
+}
+
+/* Optional: nicer layout on small tablets too */
+@media (min-width: 641px) and (max-width: 900px){
+  #signup .join-row{
+    gap: 10px;
+  }
+  #signup .join-row input{
+    flex: 1 1 60%;
+    min-width: 0;
+  }
+  #signup .join-row .btn-primary{
+    flex: 1 1 38%;
+  }
+}
