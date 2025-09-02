@@ -147,21 +147,36 @@
 
 
   <!-- ================= PRE-SIGNUP ================= -->
-  <section id="signup" class="section">
-    <div class="container">
-      <h2>Reserve Your Perfume Charm</h2>
-      <p class="lead">Join the first release list. We’ll notify you ahead of the public launch and secure your place in line.</p>
+ <section id="signup" class="section">
+  <div class="container">
+    <h2>Reserve Your Perfume Charm</h2>
+    <p class="lead">We’re operating a limited <span class="accent">waiting list</span> and accepting <span class="accent">pre-orders</span>. Place a fully refundable <span class="accent">€1 deposit</span> to secure priority access, then leave your email and tap “Join Waitlist”.</p>
 
+    <div class="signup-grid">
+      <!-- Left: quick bullets -->
+      <ul class="signup-points">
+        <li>€1 deposit is fully refundable anytime</li>
+        <li>Priority notification before public launch</li>
+        <li>Limited first production run</li>
+      </ul>
+
+      <!-- Right: deposit + email -->
       <form class="signup" action="#" method="post" onsubmit="return handleSignup(event)">
-        <div class="input" role="group" aria-label="Email pre-signup">
-          <input type="email" name="email" id="email" placeholder="Enter your email address" required aria-label="Email address" />
-          <button type="submit" class="btn-primary">Join Waitlist</button>
-        </div>
-        <p class="note">Optional: place a refundable deposit to prioritize your reservation.</p>
-        <a class="paylink" href="https://example.com/pay" target="_blank" rel="noopener">Reserve with €10 deposit →</a>
+     <!-- ONE smart pill: email + pay -->
+<div class="input join-row" role="group" aria-label="Email and deposit">
+  <input type="email" name="email" id="email" placeholder="Enter your email address" required aria-label="Email address" />
+  <button type="submit" class="btn-primary">Pay €1 &amp; Join</button>
+</div>
+
+<p class="note">We’ll redirect you to a secure checkout for a fully refundable €1 deposit and confirm your spot by email.</p>
+
+
+        <p class="note">Your deposit is refundable at any time. We’ll confirm your preorder details by email.</p>
       </form>
     </div>
-  </section>
+  </div>
+</section>
+
 
   <footer>
     © <span id="year"></span> RASA — Perfume Charms. All rights reserved.
@@ -173,14 +188,30 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // PRE-SIGNUP (placeholder)
-    function handleSignup(e){
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if(!email) return false;
-      alert('Thanks! We\'ve saved: ' + email + '\n(Connect this form to your email service or Google Sheet.)');
-      e.target.reset();
+  function handleSignup(e){
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+
+    // Basic validation
+    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      alert('Please enter a valid email address.');
       return false;
     }
+
+    // TODO: replace with your real payment URL
+    const payBase = 'https://example.com/pay-1-euro';
+
+    // Pass email to checkout so it can be prefilled / attached
+    const url = payBase + '?email=' + encodeURIComponent(email);
+
+    // Optional: open in same tab so the flow feels single-step
+    window.location.href = url;
+
+    // If you also want to store the email locally before redirecting,
+    // you could POST to your endpoint here, then redirect in .then(...)
+    return false;
+  }
+
 
     // MOBILE DRAWER
     (function(){

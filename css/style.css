@@ -125,9 +125,8 @@ body{font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-
   margin:0 auto;           /* center in its column */
   border-radius:var(--radius);
   overflow:hidden;
-  border:1px solid rgba(212,175,55,.25);
   box-shadow:var(--shadow);
-  background:#000;
+  background:#fff;
 }
 
 .f-slide{
@@ -510,3 +509,74 @@ section#signup .btn:hover {
 #signup .paylink:hover {
   color: var(--gold); /* elegant hover */
 }
+
+/* Layout for signup content */
+#signup .signup-grid{
+  display:grid;
+  grid-template-columns: .9fr 1.1fr;
+  gap:24px;
+  align-items:start;
+}
+@media (max-width:980px){
+  #signup .signup-grid{ grid-template-columns:1fr; }
+}
+
+/* Bullet list */
+#signup .signup-points{
+  list-style:none;
+  margin:0; padding:0;
+  display:grid; gap:10px;
+  color:#111;           /* readable on light */
+}
+#signup .signup-points li::before{
+  content:"•"; color:var(--gold); margin-right:8px;
+}
+
+/* Deposit callout */
+#signup .deposit{
+  display:flex; align-items:center; justify-content:space-between;
+  gap:16px; padding:12px 14px;
+  border:1px solid var(--gold);
+  border-radius:14px;
+  background:#fff;                  /* white card */
+  box-shadow:0 6px 12px rgba(212,175,55,.12);
+  margin-bottom:12px;
+}
+#signup .deposit-copy{
+  display:flex; flex-direction:column; line-height:1.2;
+  color:#111;
+}
+#signup .deposit .btn-primary.pay{
+  white-space:nowrap;
+  padding:10px 16px;
+}
+
+/* Existing input restyle kept, ensure black text/placeholder */
+#signup .input{
+  background:#fff;
+  border:1px solid var(--gold);
+  border-radius:999px;
+  padding:6px 8px;
+  display:flex; gap:12px; align-items:center;
+}
+#signup .input input{ color:#000; }
+#signup .input input::placeholder{ color:#000 !important; opacity:1; }
+
+/* Notes and link */
+#signup .note{ color:#000 !important; }
+#signup .paylink{ color:#000 !important; border-bottom:1px dotted var(--gold); text-decoration:none; }
+#signup .paylink:hover{ color:var(--gold); }
+
+/* Buttons on light background */
+#signup .btn-primary{
+  border:none;
+  color:#111;
+  background:linear-gradient(135deg, #f7e7a7, var(--gold));
+  font-weight:600;
+  padding:12px 20px;
+  border-radius:999px;
+  cursor:pointer;
+  transition:filter .3s ease, transform .3s ease;
+  box-shadow:0 6px 12px rgba(212,175,55,.25);
+}
+#signup .btn-primary:hover{ filter:saturate(110%); transform:translateY(-1px); }
