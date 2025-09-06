@@ -785,3 +785,28 @@ section#signup .btn:hover {
 
 }
 
+/* Enhanced mobile responsiveness */
+@media (max-width: 375px) {
+  .hero-img {
+    object-fit: cover;
+    object-position: center center;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+  }
+}
+
+/* Prevent horizontal overflow */
+.hero-image {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* Better object positioning for mobile */
+@media (max-width: 640px) {
+  .hero-img {
+    object-fit: cover;
+    object-position: center 20%; /* Adjust this percentage to focus on the important part of your image */
+  }
+}
