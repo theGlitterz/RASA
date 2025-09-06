@@ -44,30 +44,27 @@
     <!-- Single hero image -->
 <div class="hero-image">
   <picture>
-    <source
-      src="images/RASA_Perfume_Keychain/hero-mobile-tall-828x1792.png 828w,
-      images/RASA_Perfume_Keychain/hero-mobile-tall-1170x2532.png 1170w"
-      sizes="100vw">
-    <!-- Phones -->
+    <!-- Phones (portrait up to 640px wide) -->
     <source
       media="(max-width: 640px)"
-      src= "images/RASA_Perfume_Keychain/hero-mobile-720.png 720w,
-        images/RASA_Perfume_Keychain/hero-mobile-1080.png 1080w"
+      srcset="
+        images/RASA_Perfume_Keychain/hero-mobile-tall-828x1792.png 828w,
+        images/RASA_Perfume_Keychain/hero-mobile-tall-1170x2532.png 1170w"
       sizes="100vw">
 
     <!-- Tablets -->
     <source
       media="(max-width: 1024px)"
-      src="
+      srcset="
         images/RASA_Perfume_Keychain/hero-tablet-1280.png 1280w,
         images/RASA_Perfume_Keychain/hero-tablet-1600.png 1600w"
       sizes="100vw">
 
-    <!-- Desktop default -->
+    <!-- Desktop fallback -->
     <img
       class="hero-img"
       src="images/RASA_Perfume_Keychain/hero-desktop-1920.png"
-      src="
+      srcset="
         images/RASA_Perfume_Keychain/hero-desktop-1280.png 1280w,
         images/RASA_Perfume_Keychain/hero-desktop-1600.png 1600w,
         images/RASA_Perfume_Keychain/hero-desktop-1920.png 1920w,
@@ -76,6 +73,9 @@
       alt="RASA Perfume Charm">
   </picture>
 </div>
+
+
+
 
 
 
