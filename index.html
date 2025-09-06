@@ -192,29 +192,47 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // PRE-SIGNUP (placeholder)
-  function handleSignup(e){
-    e.preventDefault();
-    const email = document.getElementById('email').value.trim();
+  
+ function handleSignup(e){
+  e.preventDefault();
 
-    // Basic validation
-    if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
-      alert('Please enter a valid email address.');
-      return false;
-    }
-
-    // TODO: replace with your real payment URL
-    const payBase = 'https://example.com/pay-1-euro';
-
-    // Pass email to checkout so it can be prefilled / attached
-    const url = payBase + '?email=' + encodeURIComponent(email);
-
-    // Optional: open in same tab so the flow feels single-step
-    window.location.href = url;
-
-    // If you also want to store the email locally before redirecting,
-    // you could POST to your endpoint here, then redirect in .then(...)
+  const emailEl = document.getElementById('email');
+  const email = (emailEl?.value || '').trim();
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    alert('Please enter a valid email address.');
     return false;
   }
+
+  // 1) Log to Google Sheet via Apps Script (form-encoded = no CORS issues)
+  const APPSCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz25K52Fglzdvqn99Jz-3WEvi3Qnk733e19b5f5431QyU5ELbqxMq0alWhiPst2HBQ/exec'; // .../exec
+  const form = new URLSearchParams({
+    email,
+    source: 'waitlist-preorder',
+    ua: navigator.userAgent,
+    page: location.href
+  });
+
+  // Use sendBeacon if available (survives navigation); else fetch with keepalive
+  let sent = false;
+  if (navigator.sendBeacon) {
+    const blob = new Blob([form.toString()], { type: 'application/x-www-form-urlencoded' });
+    sent = navigator.sendBeacon(APPSCRIPT_URL, blob);
+  }
+  if (!sent) {
+    try {
+      fetch(APPSCRIPT_URL, { method: 'POST', body: form, keepalive: true });
+    } catch(e) { /* ignore */ }
+  }
+
+  // 2) Redirect to PayPal
+  const PAYPAL_LINK = 'https://www.paypal.com/ncp/payment/KLA58QYAGLVTY';
+  const url = PAYPAL_LINK + '?email=' + encodeURIComponent(email);
+  window.location.href = url;
+
+  return false;
+}
+
+
 
 
     // MOBILE DRAWER
