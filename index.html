@@ -17,23 +17,31 @@
   <!-- Backdrop for closing when tapping outside -->
   <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
 
-  <nav id="mobileDrawer" class="drawer" aria-hidden="true" hidden>
-    <button class="drawer-close" id="drawerClose" aria-label="Close">X</button>
-    <!-- <a href="#catalogue">Catalogue</a> -->
-    <a href="#feature">Charm Details</a>
-    <a href="#about">Our Story</a>
-    <a href="#signup" class="join">Join Waitlist</a>
-  </nav>
+ <nav id="mobileDrawer" class="drawer" aria-hidden="true" hidden>
+  <button class="drawer-close" id="drawerClose" aria-label="Close">X</button>
+  <a href="#feature">Charm Details</a>
+  <a href="#about">Our Story</a>
+  <a href="https://instagram.com/rasafragrance.co" target="_blank" rel="noopener">Follow Us</a>
+  <a href="#signup" class="join">Join Waitlist</a>
+</nav>
+
 
   <!-- ================= HERO ================= -->
   <header class="hero" aria-label="Hero">
     <!-- Overlay buttons (shown on tablet/desktop) -->
-    <nav class="hero-actions" aria-label="Hero quick actions">
-      <!-- <a href="#catalogue" class="btn">Catalogue</a> -->
-      <a href="#feature" class="btn">Charm Details</a>
-      <a href="#about" class="btn">Our Story</a>
-      <a href="#signup" class="btn gold">Join Waitlist</a>
-    </nav>
+   <nav class="hero-actions" aria-label="Hero quick actions">
+  <a href="#feature" class="btn">Charm Details</a>
+  <a href="#about" class="btn">Our Story</a>
+  <a href="#signup" class="btn gold">Join Waitlist</a>
+
+  <!-- NEW: Instagram + Email icon buttons -->
+  <a href="https://instagram.com/rasafragrance.co" 
+   target="_blank" 
+   rel="noopener" 
+   class="btn gold">Follow Us</a>
+
+</nav>
+
 <!-- Mobile hamburger floating over hero -->
 <button class="hamburger mobile-hamburger"
         id="hamburger"
@@ -186,9 +194,28 @@
 </section>
 
 
-  <footer>
-    © <span id="year"></span> RĀSA — Perfume Charms. All rights reserved.
-  </footer>
+<footer>
+  <div class="footer-social">
+    <a href="https://instagram.com/rasafragrance.co" target="_blank" rel="noopener">
+      <!-- Instagram Icon -->
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9A5.5 5.5 0 0 1 16.5 22h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9zm4.5 3.5a5.5 5.5 0 1 1 0 11 5.5 5.5 0 0 1 0-11zm0 2a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.75-2a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/>
+      </svg>
+      Instagram
+    </a>
+    <a href="mailto:contact@rasafragrance.co">
+      <!-- Email Icon -->
+      <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path d="M3 5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5zm2 0v.01L12 13l7-7.99V5H5zm14 14V8.41l-7 7-7-7V19h14z"/>
+      </svg>
+      Email
+    </a>
+  </div>
+  <p>© <span id="year"></span> RĀSA — Perfume Charms. All rights reserved.</p>
+</footer>
+
+
+
 
   <!-- ================= SCRIPTS ================= -->
   <script>
