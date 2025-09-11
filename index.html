@@ -20,8 +20,9 @@
  <nav id="mobileDrawer" class="drawer" aria-hidden="true" hidden>
   <button class="drawer-close" id="drawerClose" aria-label="Close">X</button>
   <a href="#feature">Charm Details</a>
-  <a href="#about">Our Story</a>
+  <a href="#container">Our Story</a>
   <a href="https://instagram.com/rasafragrance.co" target="_blank" rel="noopener">Follow Us</a>
+    <a href="#FAQs">FAQs</a>
   <a href="#signup" class="join">Join Waitlist</a>
 </nav>
 
@@ -87,10 +88,11 @@
 
 
 
+
     <!-- Headline -->
     <div class="hero-copy overlay">
       <h1 class="brand">RĀSA — Perfume Charms</h1>
-      <p class="tag">Fine fragrance meets couture utility. Wear it on your bag, carry your aura everywhere.</p>
+      <p class="tag">RĀSA’s Gold Edition — <span class="accent" class="strong" >only 500 bottles</span>. A blind-box reveal of 1 of 9 Rasas, designed to clip on your bag and carry your aura everywhere.</p>
     </div>
   </header>
 
@@ -127,7 +129,7 @@
         <!-- Right: copy/details -->
         <div class="feature-copy">
           <h2>RĀSA Perfume Charm</h2>
-          <p class="lead"> A sleek, portable perfume charm crafted with refined detail. Designed to mist fragrance in a soft, even veil—always within reach, wherever life takes you.
+          <p class="lead"> A sleek, portable perfume charm crafted with refined detail. Blind-box RĀSA’s Gold Edition hides one of nine Rasa essences — revealed when you unbox.
 </p>
           <ul class="feature-list">
             <li><span>Thoughtfully crafted design</span></li>
@@ -165,16 +167,19 @@
   <!-- ================= PRE-SIGNUP ================= -->
  <section id="signup" class="section">
   <div class="container">
-    <h2>Reserve Your Perfume Charm</h2>
-    <p class="lead">We’re operating a limited <span class="accent">waiting list</span> and accepting <span class="accent">pre-orders</span>. Place a fully refundable <span class="accent">€1 deposit</span> to secure priority access, then leave your email and tap “Join Waitlist”.</p>
-
+    <h2>Join the RĀSA’s Circle</h2>
+<p class="lead">
+  Claim <span class="accent">priority access</span> to the <span class="accent">RĀSA’s Gold Edition</span> — only 500 bottles, each a blind-box of 1 of 9 Rasas. Your <span class="accent">€1</span> is a fully refundable signal of interest.
+</p>
     <div class="signup-grid">
       <!-- Left: quick bullets -->
-      <ul class="signup-points">
-        <li>€1 deposit is fully refundable anytime</li>
-        <li>Priority notification before public launch</li>
-        <li>Limited first production run</li>
-      </ul>
+     <ul class="signup-points">
+  <li><strong>Mystery RĀSA’s Charm</strong> — bonus gift only for this wave</li>
+  <li><strong>Insider voting rights</strong> — help choose the next drop</li>
+  <li><strong>500 RĀSA’s Gold bottles</strong> — once gone, gone forever</li>
+  <li><strong>€1 fully refundable</strong> — cancel anytime</li>
+</ul>
+
 
       <!-- Right: deposit + email -->
       <form class="signup" action="#" method="post" onsubmit="return handleSignup(event)">
@@ -182,14 +187,41 @@
 <div class="input join-row" role="group" aria-label="Email and deposit">
   <input type="email" name="email" id="email" placeholder="Enter your email address" required aria-label="Email address" />
   <button type="submit" class="btn-primary">Pay €1 &amp; Join</button>
+ 
 </div>
 
-<p class="note">We’ll redirect you to a secure checkout for a fully refundable €1 deposit and confirm your spot by email.</p>
+  <div class="trust-inline">
+  <span><span class="check">✔</span> Secure checkout by PayPal</span>
+  <span><span class="check">✔</span> 100% refundable deposit</span>
+  <span><span class="check">✔</span> Instant email confirmation</span>
+</div>
 
 
-        <p class="note">Your deposit is refundable at any time. We’ll confirm your preorder details by email.</p>
+
       </form>
     </div>
+  </div>
+</section>
+<section id = "FAQs" class="section" aria-label="FAQ">
+  
+  <div class="container">
+    <h2>Your Questions, Answered</h2>
+    <details class="faq"><summary>Why €1?</summary>
+      <p>It filters for genuine interest so we can size the first production run. It’s fully refundable anytime.</p>
+    </details>
+    <details class="faq"><summary>How can I join the RĀSA's Circle?</summary>
+      <p>Enter your email address and click 'Pay €1 & Join' button, complete payment securely via PayPal and receive your RĀSA badge + priority updates via email  </p>
+    </details>
+    
+    <details class="faq"><summary>What makes this drop exclusive?</summary>
+      <p>Only 500 RĀSA’s Gold bottles will ever be made for this edition. Each hides 1 of 9 Rasas in a blind-box reveal.</p>
+    </details>
+    <details class="faq"><summary>What’s the “Mystery RĀSA’s Charm”?</summary>
+      <p>A small, RĀSA-only accessory included as a thank-you. It won’t be sold publicly.</p>
+    </details>
+    <details class="faq"><summary>How do refunds work?</summary>
+      <p>You’ll pay via PayPal. You can cancel from your email receipt or message us and we’ll refund immediately.</p>
+    </details>
   </div>
 </section>
 
@@ -357,6 +389,8 @@
   });
 })();
 
-  </script>
+  
+</script>
+
 </body>
 </html>

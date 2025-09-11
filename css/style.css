@@ -873,3 +873,68 @@ section#signup .btn:hover {
   height: 18px;
   fill: currentColor;
 }
+/* Founder’s Gold badge */
+.drop-badge{
+  position:absolute; top:18px; left:18px; z-index:4;
+  display:flex; gap:8px; align-items:center;
+  padding:12px 24px; border-radius:999px;
+  background:rgba(0,0,0,.35);
+  color:#f7f3e7; border:1px solid var(--gold);
+  backdrop-filter: blur(6px) saturate(140%);
+  font-size:14px; line-height:1;
+}
+.drop-badge strong{ font-weight:700; color:var(--gold); }
+@media (max-width:640px){ .drop-badge{ top:58px; left:12px; } }
+/* Trust badges under signup */
+/* Trust badges under signup */
+/* Inline trust row with gold checkmarks */
+.trust-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;              /* spacing between items */
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.trust-inline span {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.trust-inline .check {
+  color: var(--gold);     /* use your existing gold accent */
+  font-weight: bold;
+  margin-right: 6px;
+  font-size: 15px;
+}
+
+/* How it works list */
+.howto{
+  margin:8px 0 0 0; padding-left:18px; color:#111;
+}
+.howto li{ margin:4px 0; }
+/* Minimal FAQ styling */
+/* Minimal FAQ styling */
+.faq {
+  border: 1px solid var(--gold); /* gold border instead of grey */
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fff;
+  margin: 10px 0;
+}
+.faq summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #111;
+}
+.faq[open] {
+  border-color: var(--gold);
+  box-shadow: 0 6px 18px rgba(0,0,0,.08);
+}
+.faq p {
+  margin: 8px 0 0 0;
+  color: #333;
+}
