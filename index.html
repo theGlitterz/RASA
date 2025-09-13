@@ -9,6 +9,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <!-- External CSS -->
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google tag (gtag.js) — GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-806CZ5GJL8"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX'); /* your GA4 Measurement ID */
+</script>
+<!-- Microsoft Clarity (heatmaps & recordings) -->
+<script type="text/javascript">
+  (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){ (c[a].q=c[a].q||[]).push(arguments) };
+  t=l.createElement(r); t.async=1; t.src="https://www.clarity.ms/tag/"+i;
+  y=l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "taaxe9za9y");
+</script>
 </head>
 <body>
   <!-- MOBILE TOP BAR + SIDE DRAWER (phones only) -->
@@ -390,6 +406,55 @@
 })();
 
   
+</script>
+<script>
+(function () {
+  // Find the signup form (id or class)
+  const form = document.querySelector('#signup-form, form.signup');
+  const email = form?.querySelector('input[type="email"], input[name="email"]');
+  const cta   = form?.querySelector('.btn-primary');
+
+  // 1) Email field focus = interest
+  if (email) {
+    email.addEventListener('focus', function () {
+      gtag('event', 'email_focus');
+    });
+  }
+
+  // 2) CTA click (Pay €1 button)
+  if (cta) {
+    cta.addEventListener('click', function () {
+      gtag('event', 'begin_deposit', { value: 1, currency: 'EUR' });
+    });
+  }
+
+  // 3) Form submit (lead intent)
+  if (form) {
+    form.addEventListener('submit', function () {
+      gtag('event', 'join_waitlist_submit');
+    });
+  }
+
+  // (Optional) helpful engagement markers
+  setTimeout(function(){ gtag('event','engaged_time',{seconds:10}); }, 10000);
+  setTimeout(function(){ gtag('event','engaged_time',{seconds:30}); }, 30000);
+
+  // (Optional) Scroll depth checkpoints
+  const fired = {25:0,50:0,75:0};
+  window.addEventListener('scroll', function(){
+    const d = document.documentElement, b = document.body;
+    const top = d.scrollTop || b.scrollTop;
+    const height = (d.scrollHeight - d.clientHeight);
+    if(!height) return;
+    const pct = Math.round((top/height)*100);
+    [25,50,75].forEach(function(mark){
+      if(!fired[mark] && pct >= mark){
+        fired[mark] = 1;
+        gtag('event','scroll_depth',{percent: mark});
+      }
+    });
+  });
+})();
 </script>
 
 </body>
