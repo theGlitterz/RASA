@@ -302,7 +302,13 @@
       fetch(APPSCRIPT_URL, { method: 'POST', body: form, keepalive: true });
     } catch(e) { /* ignore */ }
   }
+// ✅ SAVE EMAIL LOCALLY so we can use it on the thank-you page too
+  localStorage.setItem('rasa_email', email); // <-- ADD
 
+  // ✅ FIRE "LEAD" EMAIL (email-only signup)
+  fetch('https://script.google.com/macros/s/AKfycbw4Gz8VHquQmAsSHN5NXJ1kIlaATILyCgXF64xA44xCkOqRHZ3Nq1QJYbiTh5upRQGl/exec?type=lead&email=' + encodeURIComponent(email), {
+    mode: 'no-cors' // we don't need the response; avoids CORS noise
+  }).catch(()=>{}); // <-- ADD
   // 2) Redirect to PayPal
   const PAYPAL_LINK = 'https://www.paypal.com/ncp/payment/8UY4XL7DLSFAL';
   const url = PAYPAL_LINK + '?email=' + encodeURIComponent(email);

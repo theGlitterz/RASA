@@ -39,5 +39,22 @@
     <p>We saved your spot for <strong>RĀSA Gold Edition</strong>. Check your email for confirmation.</p>
     <a href="/" class="btn-primary">Back to site</a>
   </main>
+   <script>
+    // 1) Try to get email from URL (?email=...) OR from localStorage
+    const qs = new URLSearchParams(location.search);
+    let email = (qs.get('email') || '').trim();
+    if(!email){
+      email = (localStorage.getItem('rasa_email') || '').trim();
+    }
+
+    // 2) If we have an email, fire the "paid" email via your Apps Script
+    if(email){
+      fetch('https://script.google.com/macros/s/AKfycbw4Gz8VHquQmAsSHN5NXJ1kIlaATILyCgXF64xA44xCkOqRHZ3Nq1QJYbiTh5upRQGl/exec?type=paid&email=' + encodeURIComponent(email), {
+        mode: 'no-cors'
+      }).catch(()=>{});
+      // (optional) clear after use
+      localStorage.removeItem('rasa_email');
+    }
+  </script>
 </body>
 </html>
