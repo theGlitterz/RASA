@@ -50,9 +50,9 @@
 
 </noscript>
 <!-- /Meta Pixel -->
-<script>
+<!-- <script>
   fbq('track', 'Purchase', {value: 1.00, currency: 'EUR'});
-</script>
+</script> -->
 
 </head>
 <body>
@@ -61,7 +61,44 @@
     <p>We saved your spot for <strong>RĀSA Gold Edition</strong>. Check your email for confirmation.</p>
     <a href="/" class="btn-primary">Back to site</a>
   </main>
-   <script>
+<script>
+(function(){
+  const qs = new URLSearchParams(location.search);
+  let email = (qs.get('email') || '').trim();
+  if (!email) email = (localStorage.getItem('rasa_email') || '').trim();
+  if (!email) return;
+
+  // Build params for Script A (your logger)
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbz25K52Fglzdvqn99Jz-3WEvi3Qnk733e19b5f5431QyU5ELbqxMq0alWhiPst2HBQ/exec';  // <-- existing URL for Script A
+  const BREVO_URL = 'https://script.google.com/macros/s/AKfycbw4Gz8VHquQmAsSHN5NXJ1kIlaATILyCgXF64xA44xCkOqRHZ3Nq1QJYbiTh5upRQGl/exec';  // <-- from step B2
+
+  // Script A expects: email, source, ua, page
+  const paramsA = new URLSearchParams({
+    email,
+    source: 'pre-signup',
+    ua: navigator.userAgent || '',
+    page: '/thank-you'
+  });
+
+  // 1) Log to Google Sheet (Script A)
+  fetch(`${SHEET_URL}?${paramsA.toString()}`, { mode: 'no-cors' }).catch(()=>{});
+
+  // 2) Send Brevo email (Script B)
+  fetch(`${BREVO_URL}?email=${encodeURIComponent(email)}`, { mode: 'no-cors' }).catch(()=>{});
+
+  // GA4 completion event (optional but recommended)
+  try { gtag('event','sign_up_complete', { method:'email' }); } catch(_){}
+
+  // cleanup
+  localStorage.removeItem('rasa_email');
+})();
+</script>
+
+
+
+
+
+   <!-- <script>
     // 1) Try to get email from URL (?email=...) OR from localStorage
     const qs = new URLSearchParams(location.search);
     let email = (qs.get('email') || '').trim();
@@ -77,6 +114,6 @@
       // (optional) clear after use
       localStorage.removeItem('rasa_email');
     }
-  </script>
+  </script> -->
 </body>
 </html>

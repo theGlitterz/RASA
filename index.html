@@ -44,6 +44,14 @@
        src="https://www.facebook.com/tr?id=3452852138186147&ev=PageView&noscript=1"/>
 </noscript>
 <!-- /Meta Pixel -->
+<script>
+(function(){
+  const q = new URLSearchParams(location.search);
+  const keys = ['utm_source','utm_medium','utm_campaign','utm_adset','utm_content'];
+  keys.forEach(k => { const v = q.get(k); if (v) localStorage.setItem(k, v); });
+  if (document.referrer) localStorage.setItem('rasa_ref', document.referrer);
+})();
+</script>
 
 </head>
 <body>
@@ -205,7 +213,7 @@
   <div class="container">
     <h2>Join the RĀSA’s Circle</h2>
 <p class="lead">
-  Claim <span class="accent">priority access</span> to the <span class="accent">RĀSA’s Gold Edition</span> — only 500 bottles, each a blind-box of 1 of 9 Rasas. Your <span class="accent">€1</span> is a fully refundable signal of interest.
+  Claim <span class="accent">priority access</span> to the <span class="accent">RĀSA’s Gold Edition</span> — only 500 bottles, each a blind-box of 1 of 9 Rasas.
 </p>
     <div class="signup-grid">
       <!-- Left: quick bullets -->
@@ -213,7 +221,7 @@
   <li><strong>Mystery RĀSA’s Charm</strong> — bonus gift only for this wave</li>
   <li><strong>Insider voting rights</strong> — help choose the next drop</li>
   <li><strong>500 RĀSA’s Gold bottles</strong> — once gone, gone forever</li>
-  <li><strong>€1 fully refundable</strong> — cancel anytime</li>
+
 </ul>
 
 
@@ -222,15 +230,15 @@
      <!-- ONE smart pill: email + pay -->
 <div class="input join-row" role="group" aria-label="Email and deposit">
   <input type="email" name="email" id="email" placeholder="Enter your email address" required aria-label="Email address" />
-  <button type="submit" class="btn-primary">Pay €1 &amp; Join</button>
+  <button type="submit" class="btn-primary">Join</button>
  
 </div>
 
-  <div class="trust-inline">
+  <!-- <div class="trust-inline">
   <span><span class="check">✔</span> Secure checkout by PayPal</span>
   <span><span class="check">✔</span> 100% refundable deposit</span>
   <span><span class="check">✔</span> Instant email confirmation</span>
-</div>
+</div> -->
 
 
 
@@ -242,11 +250,9 @@
   
   <div class="container">
     <h2>Your Questions, Answered</h2>
-    <details class="faq"><summary>Why €1?</summary>
-      <p>It filters for genuine interest so we can size the first production run. It’s fully refundable anytime.</p>
-    </details>
+    
     <details class="faq"><summary>How can I join the RĀSA's Circle?</summary>
-      <p>Enter your email address and click 'Pay €1 & Join' button, complete payment securely via PayPal and receive your RĀSA badge + priority updates via email  </p>
+      <p>Enter your email address and click 'Join' button, and receive your RĀSA badge + priority updates via email  </p>
     </details>
     
     <details class="faq"><summary>What makes this drop exclusive?</summary>
@@ -255,9 +261,9 @@
     <details class="faq"><summary>What’s the “Mystery RĀSA’s Charm”?</summary>
       <p>A small, RĀSA-only accessory included as a thank-you. It won’t be sold publicly.</p>
     </details>
-    <details class="faq"><summary>How do refunds work?</summary>
+    <!-- <details class="faq"><summary>How do refunds work?</summary>
       <p>You’ll pay via PayPal. You can cancel from your email receipt or message us and we’ll refund immediately.</p>
-    </details>
+    </details> -->
   </div>
 </section>
 
@@ -291,55 +297,31 @@
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // PRE-SIGNUP (placeholder)
-  
- function handleSignup(e){
-  e.preventDefault();
+ 
 
+function handleSignup(e){
+  e.preventDefault();
   const emailEl = document.getElementById('email');
   const email = (emailEl?.value || '').trim();
-  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     alert('Please enter a valid email address.');
     return false;
   }
 
-  // 1) Log to Google Sheet via Apps Script (form-encoded = no CORS issues)
-  const APPSCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz25K52Fglzdvqn99Jz-3WEvi3Qnk733e19b5f5431QyU5ELbqxMq0alWhiPst2HBQ/exec'; // .../exec
-  const form = new URLSearchParams({
-    email,
-    source: 'waitlist-preorder',
-    ua: navigator.userAgent,
-    page: location.href
-  });
+  // Tracking (keep)
+  try { gtag('event','sign_up', { method:'email' }); } catch(_){}
+  try { fbq('track','Lead'); } catch(_){}
 
-  // Use sendBeacon if available (survives navigation); else fetch with keepalive
-  let sent = false;
-  if (navigator.sendBeacon) {
-    const blob = new Blob([form.toString()], { type: 'application/x-www-form-urlencoded' });
-    sent = navigator.sendBeacon(APPSCRIPT_URL, blob);
-  }
-  if (!sent) {
-    try {
-      fetch(APPSCRIPT_URL, { method: 'POST', body: form, keepalive: true });
-    } catch(e) { /* ignore */ }
-  }
-// ✅ SAVE EMAIL LOCALLY so we can use it on the thank-you page too
-  localStorage.setItem('rasa_email', email); // <-- ADD
-
-  // ✅ FIRE "LEAD" EMAIL (email-only signup)
-  fetch('https://script.google.com/macros/s/AKfycbw4Gz8VHquQmAsSHN5NXJ1kIlaATILyCgXF64xA44xCkOqRHZ3Nq1QJYbiTh5upRQGl/exec?type=lead&email=' + encodeURIComponent(email), {
-    mode: 'no-cors' // we don't need the response; avoids CORS noise
-  }).catch(()=>{}); // <-- ADD
-  // 2) Redirect to PayPal
-  const PAYPAL_LINK = 'https://www.paypal.com/ncp/payment/8UY4XL7DLSFAL';
-  const url = PAYPAL_LINK + '?email=' + encodeURIComponent(email);
-  window.location.href = url;
-
+  // Pass to thank-you
+  localStorage.setItem('rasa_email', email);
+  window.location.href = '/thank-you.html?email=' + encodeURIComponent(email);
   return false;
 }
 
 
+</script>
 
-
+ 
     // MOBILE DRAWER
     (function(){
       const hamburger   = document.getElementById('hamburger');
