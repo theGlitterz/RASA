@@ -317,102 +317,12 @@ function handleSignup(e){
   window.location.href = '/thank-you.html?email=' + encodeURIComponent(email);
   return false;
 }
-
+</script>
 
 </script>
 
  
-    // MOBILE DRAWER
-    (function(){
-      const hamburger   = document.getElementById('hamburger');
-      const drawer      = document.getElementById('mobileDrawer');
-      const backdrop    = document.getElementById('drawerBackdrop');
-      const drawerClose = document.getElementById('drawerClose');
-
-      if(!hamburger || !drawer || !backdrop || !drawerClose) return;
-
-      function openDrawer(){
-        hamburger.setAttribute('aria-expanded', 'true');
-        drawer.removeAttribute('hidden');
-        drawer.setAttribute('aria-hidden','false');
-        drawer.classList.add('is-open');
-        backdrop.removeAttribute('hidden');
-        backdrop.classList.add('is-open');
-        document.body.classList.add('noscroll');
-      }
-      function closeDrawer(){
-        hamburger.setAttribute('aria-expanded', 'false');
-        drawer.setAttribute('aria-hidden','true');
-        drawer.classList.remove('is-open');
-        backdrop.classList.remove('is-open');
-        document.body.classList.remove('noscroll');
-        setTimeout(() => {
-          drawer.setAttribute('hidden','');
-          backdrop.setAttribute('hidden','');
-        }, 280);
-      }
-
-      hamburger.addEventListener('click', () => {
-        const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
-        isOpen ? closeDrawer() : openDrawer();
-      });
-      drawerClose.addEventListener('click', closeDrawer);
-      backdrop.addEventListener('click', closeDrawer);
-      document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeDrawer(); });
-      drawer.addEventListener('click', (e) => { if(e.target.matches('a')) closeDrawer(); });
-    })();
-
-    // FEATURE auto-rotating images
-    (function(){
-      const slides = Array.from(document.querySelectorAll('#feature .f-slide'));
-      if(slides.length <= 1) return;
-
-      let i = 0;
-      const show = (idx) => {
-        slides.forEach(s => s.classList.remove('active'));
-        slides[idx].classList.add('active');
-      };
-
-      show(i);
-      let timer = setInterval(() => {
-        i = (i + 1) % slides.length;
-        show(i);
-      }, 3500);
-
-      document.addEventListener('visibilitychange', () => {
-        if(document.hidden){ clearInterval(timer); }
-        else{
-          show(i);
-          timer = setInterval(() => {
-            i = (i + 1) % slides.length;
-            show(i);
-          }, 3500);
-        }
-      });
-    })();
-
-    (function(){
-  const drawer   = document.getElementById('mobileDrawer');
-  const backdrop = document.getElementById('drawerBackdrop');
-  const burger   = document.getElementById('hamburger');
-  if(!drawer || !backdrop || !burger) return;
-
-  const closeDrawer = () => {
-    burger.setAttribute('aria-expanded','false');
-    drawer.classList.remove('is-open');
-    backdrop.classList.remove('is-open');
-    drawer.setAttribute('hidden','');
-    backdrop.setAttribute('hidden','');
-    document.body.classList.remove('noscroll');
-  };
-
-  // Ensure closed on load and on desktop resize
-  closeDrawer();
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 640) closeDrawer();
-  });
-})();
-
+   
   
 </script>
 <script>
