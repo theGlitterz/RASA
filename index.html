@@ -380,10 +380,7 @@ function handleSignup(e){
     fbq('track', 'Lead');
   });
 
-  // InitiateCheckout: when user clicks the €1 button
-  cta?.addEventListener('click', function(){
-    fbq('track', 'InitiateCheckout', {currency: 'EUR', value: 1.00});
-  });
+  
 })();
 </script>
 
