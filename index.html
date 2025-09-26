@@ -339,12 +339,7 @@ function handleSignup(e){
     });
   }
 
-  // 2) CTA click (Pay €1 button)
-  if (cta) {
-    cta.addEventListener('click', function () {
-      gtag('event', 'begin_deposit', { value: 1, currency: 'EUR' });
-    });
-  }
+
 
   // 3) Form submit (lead intent)
   if (form) {
